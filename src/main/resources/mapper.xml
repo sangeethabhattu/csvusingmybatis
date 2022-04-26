@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.letigation.mapper.UserMapper">
+    
+ 
+    <resultMap type="com.letigation.model.attorneytable" id="r1">
+    
+    
+       <result column ="firmname" property="firmname"/>
+       <result column ="attorneyname" property="attorneyname"/>
+       <result column ="city" property="city"/>
+       <result column =" cellphone" property="cellphone"/>
+       <result column =" address" property="address"/>
+       <result column =" email" property="email"/>
+    
+    </resultMap>
+    
+    
+     <resultMap type="com.letigation.model.litigationdetails" id="r2">
+    
+    
+       <result column ="litigationtype" property="litigationtype"/>
+       <result column ="litigationstatus" property="litigationstatus"/>
+       <result column ="litigationcause" property="litigationcause"/>
+        <result column ="plaintiffname" property="plaintiffname"/>
+       <result column =" Venuecity" property="Venuecity"/>
+       <result column =" state1" property="state1"/>
+       <result column =" documentname1" property="documentname1"/>
+       <result column =" litigationbudget1" property="litigationbudget1"/>
+    
+    </resultMap>
+    
+
+<resultMap type="com.letigation.model.litigationmaster" id="master">
+
+      <result column ="litigationid" property="litigationid"/>
+     <result column ="litigationtype" property="litigationtype"/>
+       <result column ="litigationstatus" property="litigationstatus"/>
+       <result column ="litigationcause" property="litigationcause"/>
+        <result column ="plaintiffname" property="plaintiffname"/>
+       <result column =" Venuecity" property="Venuecity"/>
+       <result column =" state1" property="state1"/>
+       <result column =" documentname1" property="documentname1"/>
+       <result column =" litigationbudget1" property="litigationbudget1"/>
+      <result column ="firmname" property="firmname"/>
+       <result column ="attorneyname" property="attorneyname"/>
+       <result column ="city" property="city"/>
+       <result column =" cellphone1" property="cellphone1"/>
+       <result column =" address1" property="address1"/>
+       <result column =" email1" property="email1"/>
+       
+    
+    </resultMap>
+
+<insert id = "insert" >
+   INSERT INTO "Sangeetha".litigation (litigationid,litigationtype, litigationstatus, litigationcause, plaintiffname,venuecity,state1,documentname1,litigationbudget1)
+   VALUES (#{litigationid},#{litigationtype}, #{litigationstatus}, #{litigationcause}, #{plaintiffname},#{venuecity},#{state1},#{documentname1},#{litigationbudget1});
+
+   
+   
+</insert>
+
+
+<select id = "findAll11" resultMap = "r1">
+
+SELECT  firmname, attorneyname, city, cellphone1, address1, email1
+FROM "Sangeetha"."attorney"
+
+  
+</select>
+
+<select id = "findAll" resultMap = "master">
+
+SELECT *
+FROM "Sangeetha"."litigation";
+
+  
+</select>
+
+
+<select id = "findAll2" resultMap = "r2">
+
+SELECT litigationtype, litigationstatus, litigationcause, plaintiffname, venuecity, state, documentname, litigationbudget, litigationid, litigationcausename
+FROM "Sangeetha"."litigationdetails";
+
+
+  
+</select>
+
+</mapper>
+
+
+   
